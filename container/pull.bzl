@@ -106,9 +106,10 @@ def _impl(repository_ctx):
     puller = repository_ctx.attr.puller_linux_amd64
     if repository_ctx.os.name.lower().startswith("mac os"):
         puller = repository_ctx.attr.puller_darwin
-    arch = repository_ctx.execute(["uname", "-m"]).stdout.strip()
-    if arch == "s390x":
-        puller = repository_ctx.attr.puller_linux_s390x
+    elif repository_ctx.os.name.lower().startswith("linux"):
+        arch = repository_ctx.execute(["uname", "-m"]).stdout.strip()
+        if arch == "s390x":
+           puller = repository_ctx.attr.puller_linux_s390x
 
     args = [
         repository_ctx.path(puller),
