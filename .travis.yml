@@ -31,5 +31,5 @@ install:
 
 script:
   # Test things by executing the various build configurations under testing/
-  - ./buildifier container/load.bzl container/pull.bzl
+  - ./buildifier --lint=warn --warnings=attr-cfg,attr-license,attr-non-empty,attr-output-default,attr-single-file,confusing-name,constant-glob,ctx-actions,ctx-args,depset-iteration,depset-union,dict-concatenation,duplicated-name,filetype,function-docstring,git-repository,http-archive,integer-division,load,load-on-top,module-docstring,name-conventions,native-build,native-package,no-effect,out-of-order-load,output-group,package-name,package-on-top,redefined-variable,repository-name,same-origin-load,string-iteration,unreachable,unsorted-dict-items,unused-variable container/load.bzl container/pull.bzl
   - ./testing/e2e.sh
