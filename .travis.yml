@@ -31,4 +31,5 @@ install:
 
 script:
   # Test things by executing the various build configurations under testing/
+  - ./buildifier $(find . -name '*.bzl' -type f)
   - ./testing/e2e.sh
